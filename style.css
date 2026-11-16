@@ -1,0 +1,337 @@
+:root {
+  --void: #05040a;
+  --gold: #f3d48a;
+  --violet: #9b7bff;
+  --ice: #bfe3ff;
+  --white: #f6f3ff;
+  --dim: rgba(246, 243, 255, 0.55);
+  --line: rgba(246, 243, 255, 0.14);
+
+  --font-display: "Unbounded", sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 60% 45% at 20% 25%, rgba(155, 123, 255, 0.18), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 70%, rgba(243, 212, 138, 0.10), transparent 70%),
+    var(--void);
+  background-attachment: fixed;
+  color: var(--white);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#space {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3rem;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(5, 4, 10, 0.85), transparent);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1rem 4rem;
+  position: relative;
+}
+
+.hero-kicker,
+.hero-sub,
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--dim);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 25vw, 22rem);
+  line-height: 0.9;
+  margin: 1.5rem 0;
+  cursor: pointer;
+  user-select: none;
+
+  background: linear-gradient(110deg, var(--gold) 0%, var(--white) 30%, var(--violet) 55%, var(--ice) 75%, var(--gold) 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  animation: shimmer 8s linear infinite;
+  filter: drop-shadow(0 0 40px rgba(155, 123, 255, 0.35));
+  transition: transform 0.4s ease;
+}
+
+.hero-title:hover {
+  transform: scale(1.02);
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 250% 0;
+  }
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: drip 2s ease-in-out infinite;
+}
+
+@keyframes drip {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ---------- DARE U. SECTION ---------- */
+.single {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 8rem 6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.single-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.95;
+  margin: 1rem 0;
+  text-shadow: 0 0 30px rgba(243, 212, 138, 0.35);
+}
+
+.out-now {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gold);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.3; }
+}
+
+/* ---------- BUTTONS ---------- */
+.single-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.btn-solid {
+  background: var(--gold);
+  color: var(--void);
+  font-weight: 700;
+}
+
+.btn-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(243, 212, 138, 0.6);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+}
+
+.btn-ghost:hover {
+  border-color: var(--violet);
+  box-shadow: 0 0 24px rgba(155, 123, 255, 0.45);
+}
+
+/* ---------- VIDEO ---------- */
+.video-frame {
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 0 80px rgba(155, 123, 255, 0.25);
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ---------- LINK ROWS ---------- */
+.links {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 6rem;
+}
+
+.links .label {
+  margin-bottom: 1.5rem;
+}
+
+.link-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--line);
+  transition: padding 0.35s ease, color 0.35s;
+}
+
+.link-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.link-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  text-transform: uppercase;
+}
+
+.link-arrow {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  transition: transform 0.35s;
+}
+
+.link-row:hover {
+  padding-left: 1.5rem;
+  color: var(--gold);
+}
+
+.link-row:hover .link-arrow {
+  transform: translateX(-1rem) rotate(-45deg);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 4rem 6rem 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.footer-hint {
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 800px) {
+  .single {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem;
+    gap: 2.5rem;
+  }
+  .links,
+  .footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .nav {
+    padding: 1.25rem 1.5rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-links a {
+    font-size: 0.65rem;
+  }
+}
